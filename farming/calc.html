@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Fertilizer Calculator</title>
+    <style>
+        .bg-img{
+            background-image: url(https://ap.fftc.org.tw/sites/default/files/styles/project_slider/public/seedlings-are-exuberant-from-abundant-loamy-soils-nutrients-plant.jpg?itok=1aixHcwe);
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+           /* background: linear-gradient(135deg, #a8edea, #fed6e3); */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .calculator-container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            width: 360px;
+            transition: transform 0.3s;
+        }
+        .calculator-container:hover {
+            transform: translateY(-5px);
+        }
+        .calculator-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333333;
+            font-size: 24px;
+        }
+        .calculator-container label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #555555;
+        }
+        .calculator-container input, 
+        .calculator-container select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 2px solid #dddddd;
+            border-radius: 8px;
+            font-size: 16px;
+            color: #333333;
+            background-color: #f9f9f9;
+            transition: border-color 0.3s;
+        }
+        .calculator-container input:focus,
+        .calculator-container select:focus {
+            border-color: #00b4d8;
+            outline: none;
+        }
+        .calculator-container button {
+            width: 100%;
+            padding: 15px;
+            background-color: #00b4d8;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+        .calculator-container button:hover {
+            background-color: #0096c7;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 20px;
+            text-align: center;
+            color: #333333;
+        }
+        .result p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body class="bg-img">
+    
+
+<body>
+
+<div class="calculator-container">
+    <h2>Advanced Fertilizer Calculator</h2>
+    <label for="field-area">Field Area (in acres):</label>
+    <input type="number" id="field-area" placeholder="Enter field area">
+
+    <label for="crop-type">Crop Type:</label>
+    <select id="crop-type">
+        <option value="wheat">Wheat</option>
+        <option value="corn">Corn</option>
+        <option value="rice">Rice</option>
+        <option value="soybean">Soybean</option>
+    </select>
+
+    <button onclick="calculateFertilizer()">Calculate</button>
+
+    <div class="result" id="result"></div>
+</div>
+
+<script>
+    function calculateFertilizer() {
+        const area = document.getElementById('field-area').value;
+        const cropType = document.getElementById('crop-type').value;
+
+        let nitrogen = 0;
+        let phosphorus = 0;
+        let potash = 0;
+
+        if (cropType === 'wheat') {
+            nitrogen = area * 80;
+            phosphorus = area * 50;
+            potash = area * 40;
+        } else if (cropType === 'corn') {
+            nitrogen = area * 100;
+            phosphorus = area * 60;
+            potash = area * 50;
+        } else if (cropType === 'rice') {
+            nitrogen = area * 110;
+            phosphorus = area * 70;
+            potash = area * 60;
+        } else if (cropType === 'soybean') {
+            nitrogen = area * 30;
+            phosphorus = area * 40;
+            potash = area * 20;
+        }
+
+        document.getElementById('result').innerHTML = `
+            <p><strong>Required Fertilizer (per acre):</strong></p>
+            <p>Nitrogen: ${nitrogen} kg</p>
+            <p>Phosphorus: ${phosphorus} kg</p>
+            <p>Potash: ${potash} kg</p>
+        `;
+    }
+</script>
+
+</body></body>
+</html>

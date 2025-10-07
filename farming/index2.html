@@ -1,0 +1,99 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support Bot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        #chatbox {
+            width: 400px;
+            background-color: white;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+        }
+        #messages {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        .message {
+            margin: 10px 0;
+        }
+        .bot-message {
+            background-color: #eef1f7;
+            padding: 10px;
+            border-radius: 10px;
+        }
+        .user-message {
+            background-color: #d1ecf1;
+            padding: 10px;
+            border-radius: 10px;
+            text-align: right;
+        }
+        #input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="chatbox">
+        <div id="messages"></div>
+        <input type="text" id="input" placeholder="Type a message...">
+    </div>
+
+    <script>
+        const input = document.getElementById('input');
+        const messages = document.getElementById('messages');
+
+        // Function to append messages to the chatbox
+        function addMessage(content, isUser) {
+            const message = document.createElement('div');
+            message.classList.add('message', isUser ? 'user-message' : 'bot-message');
+            message.innerText = content;
+            messages.appendChild(message);
+            messages.scrollTop = messages.scrollHeight;
+        }
+
+        // Function to send user message and get bot response
+        function sendMessage(content) {
+            addMessage(content, true); // User message
+
+            // Send message to backend (API)
+            fetch('/api/send-message', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ message: content })
+            })
+            .then(response => response.json())
+            .then(data => {
+                addMessage(data.reply, false); // Bot response
+            })
+            .catch(err => {
+                addMessage("Error connecting to bot!", false);
+            });
+        }
+
+        // Capture input and send message
+        input.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && input.value.trim() !== '') {
+                sendMessage(input.value.trim());
+                input.value = ''; // Clear input
+            }
+        });
+    </script>
+</body>
+</html> -->
